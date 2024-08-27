@@ -8,20 +8,20 @@ int Calculator::calc(int work_sock)
 {
     uint32_t Quantity;
     uint32_t Length;
-    int32_t Vector_numbers; 
+    uint64_t Vector_numbers; 
     int64_t Amount; 
 
     recv(work_sock, &Quantity, sizeof(Quantity), 0);
-    for(uint32_t j = 0; j < Quantity; j++) {
+    for(uint64_t j = 0; j < Quantity; j++) {
         recv(work_sock, &Length, sizeof(Length), 0);
         Amount = 0; 
-        for(uint32_t i = 0; i < Length; i++) {
+        for(uint64_t i = 0; i < Length; i++) {
             recv(work_sock, &Vector_numbers, sizeof(Vector_numbers), 0);
             Amount = Amount + Vector_numbers;
         }
-        int32_t Average_value;
-        if (Amount > 4294967294) {
-            Average_value = 4294967294;
+        int64_t Average_value;
+        if (Amount > 1844674407370955161) {
+            Average_value = 1844674407370955161;
         } else if (Amount < 0) {
             Average_value = 0;
         } else {
